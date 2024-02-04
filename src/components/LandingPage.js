@@ -8,7 +8,7 @@ const LandingPage = () => {
         <div className="flex flex-col h-screen bg-gray-300 items-center justify-center">
             
             <div className="text-4xl text-center mb-8 text-blue-700 font-bold">
-                Email Micro-Service
+                Email-Service
             </div>
 
             <div className="bg-white p-8 rounded shadow-md w-96">
