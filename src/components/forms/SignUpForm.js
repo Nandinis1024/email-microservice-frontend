@@ -42,7 +42,7 @@ const SignUpForm = () => {
         localStorage.setItem('refresh_token', refresh_token);
         localStorage.setItem('username', username);
 
-        navigate('/email');
+        navigate('/email-page');
         toast.success('User registered successfully');
 
       } else {

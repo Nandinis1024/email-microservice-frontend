@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/email" element={<EmailForm />} />
+        <Route path="/email-page" element={<EmailForm />} />
         <Route path="*" element={<NotFoundForm />} />
       </Routes>
       <ToastContainer />
