@@ -7,8 +7,10 @@ const EmailForm = () => {
 
     const apiPort = process.env.REACT_APP_API_PORT;
     const apiHost = process.env.REACT_APP_API_HOST;
-    const emailRoute = process.env.REACT_APP_EMAIL_ROUTE;
+    const emailRoute = process.env.REACT_APP_SEND_EMAIL_ROUTE;
     const authRoute = process.env.REACT_APP_AUTH_ROUTE;
+    const logoutRoute = process.env.REACT_APP_LOGOUT_ROUTE;
+    const fileUploadRoute = process.env.REACT_APP_FILE_UPLOAD_ROUTE;
 
     const [from, setFrom] = useState('');
     const [to, setTo] = useState('');
@@ -56,30 +58,28 @@ const EmailForm = () => {
         const file = e.target.files?.[0];
         const fileType = file?.name.split('.').pop();
         const fileName = file?.name.split('.')[0];
-    
+        
         if (file) {
-
             try {
                 const formData = new FormData();
                 formData.append('file', file);
-    
-                const response = await fetch('http://localhost:4000/upload-file', {
+        
+                const response = await fetch(`${apiHost}${apiPort}${fileUploadRoute}`, {
                     method: 'POST',
                     body: formData,
                 });
-    
+        
                 if (response.ok) {
                     const url = await response.json();
                     setAttachment([url, fileName, fileType]);
                 } else {
                     console.error('Error uploading file:', response.statusText);
                 }
-
+        
             } catch (error) {
                 console.error('Error uploading file:', error.message);
             }
-
-        }
+        }        
     };
 
     const handleLogout = async (e) => {
@@ -88,7 +88,7 @@ const EmailForm = () => {
 
         try {
 
-            const response = await fetch(`${apiHost}${apiPort}${authRoute}/logout`, {
+            const response = await fetch(`${apiHost}${apiPort}${authRoute}${logoutRoute}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

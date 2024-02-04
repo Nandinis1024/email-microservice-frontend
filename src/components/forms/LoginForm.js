@@ -8,6 +8,7 @@ const LoginForm = () => {
   const apiPort = process.env.REACT_APP_API_PORT;
   const apiHost = process.env.REACT_APP_API_HOST;
   const authRoute = process.env.REACT_APP_AUTH_ROUTE;
+  const loginRoute = process.env.REACT_APP_LOGIN_ROUTE;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +21,7 @@ const LoginForm = () => {
 
     try {
 
-        const response = await fetch(`${apiHost}${apiPort}${authRoute}/login`, {
+        const response = await fetch(`${apiHost}${apiPort}${authRoute}${loginRoute}`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

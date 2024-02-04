@@ -8,6 +8,9 @@ const SignUpForm = () => {
   const apiPort = process.env.REACT_APP_API_PORT;
   const apiHost = process.env.REACT_APP_API_HOST;
   const authRoute = process.env.REACT_APP_AUTH_ROUTE;
+  const registrationRoute = process.env.REACT_APP_REGISTRATION_ROUTE;
+  const verifcationRoute = process.env.REACT_APP_VERIFICATION_ROUTE;
+  const confirmationRoute = process.env.REACT_APP_CONFIRMATION_ROUTE;
   
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -21,7 +24,7 @@ const SignUpForm = () => {
   
     try {
 
-      const response = await fetch(`${apiHost}${apiPort}${authRoute}/register`, {
+      const response = await fetch(`${apiHost}${apiPort}${authRoute}${registrationRoute}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +68,7 @@ const SignUpForm = () => {
     console.log(`Email: ${email}`);
   
     try {
-      const response = await fetch(`${apiHost}${apiPort}/send-otp`, {
+      const response = await fetch(`${apiHost}${apiPort}${confirmationRoute}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -90,7 +93,7 @@ const SignUpForm = () => {
     console.log(`Email: ${email}`);
   
     try {
-      const response = await fetch(`${apiHost}${apiPort}/verify-otp`, {
+      const response = await fetch(`${apiHost}${apiPort}${verifcationRoute}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
