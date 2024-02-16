@@ -1,25 +1,25 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import LoginForm from './components/forms/LoginForm';
-import SignUpForm from './components/forms/SignUpForm';
-import EmailForm from './components/forms/EmailForm';
-import NotFoundForm from './components/forms/NotFoundForm';
-import LandingPage from './components/LandingPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SignUp from './components/signUp';
+import Login from './components/login';
+import CreateProduct from './components/createProduct';
+import CreateFeatures from './components/createFeatures';
+import DisplayProducts from './components/displayProducts';
+
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/signup" element={<SignUpForm />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/email-page" element={<EmailForm />} />
-        <Route path="*" element={<NotFoundForm />} />
-      </Routes>
-      <ToastContainer />
-    </Router>
+    <div>
+      <BrowserRouter>
+        <Routes>
+            <Route path="/signup" element={<SignUp />}/>
+            <Route path="/login" element={<Login />}/>
+            <Route path="/createProduct" element={<CreateProduct/>}/>
+            <Route path="/createFeatures" element={<CreateFeatures/>}/>
+            <Route path="/displayProducts" element={<DisplayProducts/>}/>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
